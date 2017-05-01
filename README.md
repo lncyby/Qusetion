@@ -50,13 +50,31 @@ Node非常适合如下情况：在响应客户端之前，您预计可能有很�
 
 2. node的构架是什么样子的?
 ```
-
+主要分为三层，应用app >> V8及node内置架构 >> 操作系统. V8是node运行的环境，可以理解为node虚拟机．  
+node内置架构又可分为三层: 核心模块(javascript实现) >> c++绑定 >> libuv + CAes + http.
 ```
-1. node有哪些核心模块?
-1. node有哪些全局对象?
-1. process有哪些常用方法?
-1. console有哪些常用方法?
-1. node有哪些定时功能?
+3. node有哪些核心模块?
+```
+ EventEmitter, Stream, FS, Net和全局对象
+```
+4. node有哪些全局对象?
+```
+process, console, Buffer和exports
+```
+5. process有哪些常用方法?
+```
+process.stdin, process.stdout, process.stderr, process.on, process.env,   
+process.argv, process.arch, process.platform, process.exit
+```
+6. console有哪些常用方法?
+```
+console.log/console.info, console.error/console.warning,   
+console.time/console.timeEnd, console.trace, console.table
+```
+7. node有哪些定时功能?
+```
+ setTimeout/clearTimeout, setInterval/clearInterval, setImmediate/clearImmediate, process.nextTick
+```
 
 # Node.js 事件
 
