@@ -129,7 +129,8 @@ EventEmitter是node中一个实现观察者模式的类，主要功能是监听�
 ```
 10. EventEmitter有哪些典型应用?
 ```
-1) 模块间传递消息 2) 回调函数内外传递消息 3) 处理流数据，因为流是在EventEmitter基础上实现的. 4) 观察者模式发射触发机制相关应用
+1) 模块间传递消息 2) 回调函数内外传递消息 3) 处理流数据，因为流是在EventEmitter基础上实现的.  
+4) 观察者模式发射触发机制相关应用
 ```
 11. 怎么捕获EventEmitter的错误事件?
 ```
@@ -137,5 +138,6 @@ EventEmitter是node中一个实现观察者模式的类，主要功能是监听�
 ```
 12. EventEmitter中的newListenser事件有什么用处?
 ```
-newListener可以用来做事件机制的反射，特殊应用，事件管理等．当任何on事件添加到EventEmitter时，就会触发newListener事件，基于这种模式，我们可以做很多自定义处理.
+newListener可以用来做事件机制的反射，特殊应用，事件管理等．当任何on事件添加到EventEmitter时，  
+就会触发newListener事件，基于这种模式，我们可以做很多自定义处理.
 ```
