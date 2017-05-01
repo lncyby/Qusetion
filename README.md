@@ -79,14 +79,63 @@ console.time/console.timeEnd, console.trace, console.table
 # Node.js 事件
 
 1. Promise 中 .then 的第二参数与 .catch 有什么区别?
-1. Eventemitter 的 emit 是同步还是异步?
-1. 如何判断接口是否异步? 是否只要有回调函数就是异步?
-1. nextTick, setTimeout 以及 setImmediate 三者有什么区别?
-1. 如何实现一个 sleep 函数?
-1. 如何实现一个异步的 reduce? (注:不是异步完了之后同步 reduce)
-1. node中的事件循环是什么样子的?
-1. 什么是EventEmitter?
-1. 如何实现一个EventEmitter?
-1. EventEmitter有哪些典型应用?
-1. 怎么捕获EventEmitter的错误事件?
-1. EventEmitter中的newListenser事件有什么用处?
+```
+```
+2. Eventemitter 的 emit 是同步还是异步?
+```
+Node.js 中 Eventemitter 的 emit 是同步的
+```
+3. 如何判断接口是否异步? 是否只要有回调函数就是异步?
+```
+单纯使用回调函数并不会异步, IO 操作才可能会异步, 除此之外还有使用 setTimeout 等方式实现异步.
+```
+4. nextTick, setTimeout 以及 setImmediate 三者有什么区别?
+```
+process.nextTick()设置的回调函数，会在代码运行完成后立即执行，会在下次事件循环之前被调用，
+setImmediate()所设置的回调函数会存到到链表中，每次事件循环只执行链表中的一个回调函数
+
+process.nextTick()，效率最高，消费资源小，但会阻塞CPU的后续调用； 
+setTimeout()，精确度不高，可能有延迟执行的情况发生，且因为动用了红黑树，所以消耗资源大； 
+setImmediate()，消耗的资源小，也不会造成阻塞，但效率也是最低的。
+```
+5. 如何实现一个 sleep 函数?
+```
+function sleep(ms) {
+  var start = Date.now(), expire = start + ms;
+  while (Date.now() < expire) ;
+  return;
+}
+
+sleep()的实现分为三步：
+1.注册一个信号signal(SIGALRM,handler)。接收内核给出的一个信号。
+2.调用alarm()函数。
+3.pause()挂起进程。
+```
+6. 如何实现一个异步的 reduce? (注:不是异步完了之后同步 reduce)
+```
+
+```
+7. node中的事件循环是什么样子的?
+```
+总体上执行顺序是：process.nextTick >> setImmidate >> setTimeout/S
+```
+8. 什么是EventEmitter?
+```
+EventEmitter是node中一个实现观察者模式的类，主要功能是监听和发射消息，用于处理多模块交互问题.
+```
+9. 如何实现一个EventEmitter?
+```
+主要分三步：定义一个子类，调用构造函数，继承EventEmitter
+```
+10. EventEmitter有哪些典型应用?
+```
+1) 模块间传递消息 2) 回调函数内外传递消息 3) 处理流数据，因为流是在EventEmitter基础上实现的. 4) 观察者模式发射触发机制相关应用
+```
+11. 怎么捕获EventEmitter的错误事件?
+```
+监听error事件即可．如果有多个EventEmitter,也可以用domain来统一处理错误事件.
+```
+12. EventEmitter中的newListenser事件有什么用处?
+```
+newListener可以用来做事件机制的反射，特殊应用，事件管理等．当任何on事件添加到EventEmitter时，就会触发newListener事件，基于这种模式，我们可以做很多自定义处理.
+```
