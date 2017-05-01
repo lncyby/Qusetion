@@ -1,7 +1,7 @@
 # Node.js 基础知识
 1. 为什么要用node?
 ```
-正如 JavaScript 为客户端而生,Node.js 为网络而生。Node.js 能做的远不止开发一个网站那么简单,使用 Node.js,你可以轻松地开发:
+正如JavaScript为客户端而生,Node.js 为网络而生。Node.js 能做的远不止开发一个网站那么简单,使用 Node.js,你可以轻松地开发:
 1. 具有复杂逻辑的网站;
 2. 基于社交网络的大规模 Web 应用;
 3. Web Socket 服务器;
