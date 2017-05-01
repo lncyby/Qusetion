@@ -6,6 +6,7 @@
 本身既是代码，又是服务器，前后端使用统一语言;可扩展体现在可以轻松应对多实例，多服务器架构，同时有海量  
 的第三方应用组件．
 ```
+
 ##### 正如JavaScript为客户端而生,Node.js 为网络而生。Node.js 能做的远不止开发一个网站那么简单,使用 Node.js,你可以轻松地开发:
 ```
 1. 具有复杂逻辑的网站;
@@ -18,6 +19,7 @@
 8. 单元测试工具;
 9. 客户端 JavaScript 编译器。
 ```
+
 ### Node.js优点：
 ```
 1. 采用事件驱动、异步编程，为网络服务而设计。其实Javascript的匿名函数和闭包特性非常适合事件驱动、异步编程。  
@@ -27,6 +29,7 @@
 3. Node.js轻量高效，可以认为是数据密集型分布式部署环境下的实时应用系统的完美解决方案。  
 Node非常适合如下情况：在响应客户端之前，您预计可能有很高的流量，但所需的服务器端逻辑和处理不一定很多。
 ```
+
 ### Node.js缺点：
 ```
 可靠性低
@@ -53,24 +56,29 @@ Node非常适合如下情况：在响应客户端之前，您预计可能有很�
 主要分为三层，应用app >> V8及node内置架构 >> 操作系统. V8是node运行的环境，可以理解为node虚拟机．  
 node内置架构又可分为三层: 核心模块(javascript实现) >> c++绑定 >> libuv + CAes + http.
 ```
+
 3. node有哪些核心模块?
 ```
  EventEmitter, Stream, FS, Net和全局对象
 ```
+
 4. node有哪些全局对象?
 ```
 process, console, Buffer和exports
 ```
+
 5. process有哪些常用方法?
 ```
 process.stdin, process.stdout, process.stderr, process.on, process.env,   
 process.argv, process.arch, process.platform, process.exit
 ```
+
 6. console有哪些常用方法?
 ```
 console.log/console.info, console.error/console.warning,   
 console.time/console.timeEnd, console.trace, console.table
 ```
+
 7. node有哪些定时功能?
 ```
  setTimeout/clearTimeout, setInterval/clearInterval, setImmediate/clearImmediate, process.nextTick
@@ -81,14 +89,17 @@ console.time/console.timeEnd, console.trace, console.table
 1. Promise 中 .then 的第二参数与 .catch 有什么区别?
 ```
 ```
+
 2. Eventemitter 的 emit 是同步还是异步?
 ```
 Node.js 中 Eventemitter 的 emit 是同步的
 ```
+
 3. 如何判断接口是否异步? 是否只要有回调函数就是异步?
 ```
 单纯使用回调函数并不会异步, IO 操作才可能会异步, 除此之外还有使用 setTimeout 等方式实现异步.
 ```
+
 4. nextTick, setTimeout 以及 setImmediate 三者有什么区别?
 ```
 process.nextTick()设置的回调函数，会在代码运行完成后立即执行，会在下次事件循环之前被调用，
@@ -98,6 +109,7 @@ process.nextTick()，效率最高，消费资源小，但会阻塞CPU的后续�
 setTimeout()，精确度不高，可能有延迟执行的情况发生，且因为动用了红黑树，所以消耗资源大； 
 setImmediate()，消耗的资源小，也不会造成阻塞，但效率也是最低的。
 ```
+
 5. 如何实现一个 sleep 函数?
 ```
 function sleep(ms) {
@@ -111,33 +123,41 @@ sleep()的实现分为三步：
 2.调用alarm()函数。
 3.pause()挂起进程。
 ```
+
 6. 如何实现一个异步的 reduce? (注:不是异步完了之后同步 reduce)
 ```
 
 ```
+
 7. node中的事件循环是什么样子的?
 ```
 总体上执行顺序是：process.nextTick >> setImmidate >> setTimeout/S
 ```
+
 8. 什么是EventEmitter?
 ```
 EventEmitter是node中一个实现观察者模式的类，主要功能是监听和发射消息，用于处理多模块交互问题.
 ```
+
 9. 如何实现一个EventEmitter?
 ```
 主要分三步：定义一个子类，调用构造函数，继承EventEmitter
 ```
+
 10. EventEmitter有哪些典型应用?
 ```
 1) 模块间传递消息 2) 回调函数内外传递消息 3) 处理流数据，因为流是在EventEmitter基础上实现的.  
 4) 观察者模式发射触发机制相关应用
 ```
+
 11. 怎么捕获EventEmitter的错误事件?
 ```
 监听error事件即可．如果有多个EventEmitter,也可以用domain来统一处理错误事件.
 ```
+
 12. EventEmitter中的newListenser事件有什么用处?
 ```
 newListener可以用来做事件机制的反射，特殊应用，事件管理等．当任何on事件添加到EventEmitter时，  
 就会触发newListener事件，基于这种模式，我们可以做很多自定义处理.
 ```
+
